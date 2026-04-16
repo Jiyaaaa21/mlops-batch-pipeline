@@ -15,42 +15,42 @@ It is designed to demonstrate core engineering principles required in real-world
 
 The pipeline follows a simple, modular batch processing flow:
 
-1. Load and validate configuration
-2. Load and validate dataset
-3. Perform rolling mean computation on `close` prices
-4. Generate binary trading signal
-5. Compute metrics and execution latency
+1. Load and validate configuration  
+2. Load and validate dataset  
+3. Perform rolling mean computation on `close` prices  
+4. Generate binary trading signal  
+5. Compute metrics and execution latency  
 6. Persist outputs (JSON metrics + logs)
 
 ---
 
 ## Features
 
-- Configuration-driven execution using YAML
-- Deterministic behavior using fixed random seed
-- Robust CSV parsing (handles malformed quoted rows)
-- Rolling window computation with controlled NaN handling
-- Structured metrics output for downstream systems
-- Comprehensive logging for observability
+- Configuration-driven execution using YAML  
+- Deterministic behavior using fixed random seed  
+- Robust CSV parsing (handles malformed quoted rows)  
+- Rolling window computation with controlled NaN handling  
+- Structured metrics output for downstream systems  
+- Comprehensive logging for observability  
 - Fully containerized for reproducible execution
 
 ---
 
 ## Project Structure
 
-
+```
 mlops-batch-pipeline/
-|__ dataset_view.py  # to understand dataset structure
-├── run.py # Main pipeline entry point
-├── config.yaml # Configuration (seed, window, version)
-├── data.csv # Input dataset
-├── requirements.txt # Python dependencies
-├── Dockerfile # Container definition
-├── README.md # Documentation
-├── metrics.json # Sample output
-├── run.log # Sample logs
-├── .dockerignore # Docker build optimization
----
+|__ dataset_view        # to understand dataset structure
+├── run.py              # Main pipeline entry point
+├── config.yaml         # Configuration (seed, window, version)
+├── data.csv            # Input dataset
+├── requirements.txt    # Python dependencies
+├── Dockerfile          # Container definition
+├── README.md           # Documentation
+├── metrics.json        # Sample output
+├── run.log             # Sample logs
+├── .dockerignore       # Docker build optimization
+```
 
 ## Configuration
 
