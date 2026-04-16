@@ -1,43 +1,77 @@
-# MLOps Batch Pipeline Task
+# MLOps Batch Pipeline
 
-This project implements a minimal MLOps-style batch pipeline in Python.
+## Overview
 
-Features:
-- Config-driven execution using YAML
-- Deterministic runs using fixed seed
-- Rolling mean computation and signal generation
-- Structured metrics output (JSON)
-- Detailed logging for observability
-- Fully Dockerized for reproducible execution
+This project implements a minimal, production-oriented MLOps batch pipeline in Python.  
+It is designed to demonstrate core engineering principles required in real-world ML systems:
 
-1. Project Structure
+- **Reproducibility** via configuration and deterministic execution
+- **Observability** through structured logging and metrics
+- **Deployment readiness** using Docker
+
+---
+
+## Architecture
+
+The pipeline follows a simple, modular batch processing flow:
+
+1. Load and validate configuration
+2. Load and validate dataset
+3. Perform rolling mean computation on `close` prices
+4. Generate binary trading signal
+5. Compute metrics and execution latency
+6. Persist outputs (JSON metrics + logs)
+
+---
+
+## Features
+
+- Configuration-driven execution using YAML
+- Deterministic behavior using fixed random seed
+- Robust CSV parsing (handles malformed quoted rows)
+- Rolling window computation with controlled NaN handling
+- Structured metrics output for downstream systems
+- Comprehensive logging for observability
+- Fully containerized for reproducible execution
+
+---
+
+## Project Structure
+
 
 mlops-batch-pipeline/
+|__ dataset_view.py  # to understand dataset structure
+├── run.py # Main pipeline entry point
+├── config.yaml # Configuration (seed, window, version)
+├── data.csv # Input dataset
+├── requirements.txt # Python dependencies
+├── Dockerfile # Container definition
+├── README.md # Documentation
+├── metrics.json # Sample output
+├── run.log # Sample logs
+├── .dockerignore # Docker build optimization
+---
 
-│__ dataset_view.py        # to understand dataset structure
-├── run.py                 # Main pipeline (entry point)
-├── config.yaml            # Config (seed, window, version)
-├── data.csv               # Input dataset
-├── requirements.txt       # Dependencies
-├── Dockerfile             # Docker setup
-├── README.md              # Documentation
-│
-├── metrics.json           # Sample output (success case)
-├── run.log                # Sample logs
-│
-├── .dockerignore          # Ignore unnecessary files in Docker
+## Configuration
 
 
-2. Local Execution
+Example `config.yaml`:
+
+```yaml
+seed: 42
+window: 5
+version: "v1"
+
+-> Local Execution
 
 python run.py --input data.csv --config config.yaml --output metrics.json --log-file run.log
 
-3. Docker Execution
+-> Docker Execution
 
-docker build -t mlops-task .
+docker build -t mlops-task 
 docker run --rm mlops-task
 
-4. Example Output
+Example Output
 
 {
   "version": "v1",
@@ -49,12 +83,63 @@ docker run --rm mlops-task
   "status": "success"
 }
 
-5. Key Design Decisions
+## Error Handling
 
-- First (window-1) rows are dropped due to undefined rolling mean
-- CSV parsing includes handling malformed quoted rows
-- Metrics are written in both success and error cases
-- Logging captures all major pipeline steps for observability
-- Seed ensures deterministic behavior across runs
+The pipeline is designed to fail gracefully and provide structured feedback.
+
+Handled scenarios include:
+- Missing or inaccessible input files
+- Invalid or malformed CSV data
+- Missing required columns (e.g., `close`)
+- Empty datasets
+- Invalid configuration schema
+
+In all failure cases, a structured error response is written to `metrics.json`.
+
+---
+
+## Logging and Observability
+
+Logging captures all key stages of execution:
+
+- Job initialization
+- Configuration loading and validation
+- Dataset ingestion
+- Processing steps (rolling mean, signal generation)
+- Metrics summary
+- Execution completion status
+
+This ensures traceability and debuggability in production environments.
+
+---
+
+## Reproducibility
+
+The pipeline ensures deterministic outputs by:
+
+- Using a fixed random seed from configuration
+- Avoiding non-deterministic operations in processing
+
+Repeated runs with the same inputs produce identical results (excluding latency).
+
+---
+
+## Design Decisions
+
+- **NaN Handling**: Initial `(window - 1)` rows are dropped due to undefined rolling mean
+- **Schema Consistency**: Fixed output format for reliable downstream consumption
+- **Error Reporting**: Metrics file is written in both success and failure scenarios
+- **Separation of Concerns**: Clear distinction between config, data loading, and processing logic
+
+---
+
+## Notes
+
+- No hardcoded paths; all inputs are passed via CLI arguments
+- Designed as a minimal but extensible foundation for larger ML pipelines
+
+
+
+
 
 
