@@ -1,0 +1,57 @@
+2026-04-16 09:32:58,972 - INFO - Job started
+2026-04-16 09:32:58,975 - INFO - Job completed successfully
+2026-04-16 09:36:40,088 - INFO - Job started
+2026-04-16 09:36:40,090 - ERROR - Job failed
+Traceback (most recent call last):
+  File "C:\Users\user\MLOps_Task\run.py", line 54, in main
+    config = load_config(args.config)
+  File "C:\Users\user\MLOps_Task\run.py", line 28, in load_config
+    with open(path, "r") as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'config.yaml'
+2026-04-16 09:39:29,005 - INFO - Job started
+2026-04-16 09:39:29,020 - INFO - Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-16 09:39:29,125 - INFO - Metrics: {'version': 'v1', 'rows_processed': 0, 'metric': 'signal_rate', 'value': 0.0, 'latency_ms': 120, 'seed': 42, 'status': 'success'}
+2026-04-16 09:39:29,125 - INFO - Job completed successfully
+2026-04-16 09:41:25,034 - INFO - Job started
+2026-04-16 09:41:25,034 - INFO - Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-16 09:41:25,105 - INFO - Rows loaded: 10000
+2026-04-16 09:41:25,105 - INFO - Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.0, 'latency_ms': 71, 'seed': 42, 'status': 'success'}
+2026-04-16 09:41:25,105 - INFO - Job completed successfully
+2026-04-16 09:41:36,074 - INFO - Job started
+2026-04-16 09:41:36,074 - INFO - Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-16 09:41:36,140 - INFO - Rows loaded: 10000
+2026-04-16 09:41:36,140 - INFO - Metrics: {'version': 'v1', 'rows_processed': 10000, 'metric': 'signal_rate', 'value': 0.0, 'latency_ms': 65, 'seed': 42, 'status': 'success'}
+2026-04-16 09:41:36,140 - INFO - Job completed successfully
+2026-04-16 09:46:06,979 - INFO - Job started
+2026-04-16 09:46:06,979 - INFO - Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-16 09:46:07,025 - INFO - Rows loaded: 10000
+2026-04-16 09:46:07,181 - INFO - Rolling mean and signal generated
+2026-04-16 09:46:07,189 - INFO - Metrics: {'version': 'v1', 'rows_processed': 9996, 'metric': 'signal_rate', 'signal_rate': np.float64(0.49909963985594236), 'latency_ms': 210, 'seed': 42, 'status': 'success'}
+2026-04-16 09:46:07,189 - INFO - Job completed successfully
+2026-04-16 09:50:42,001 - INFO - Job started
+2026-04-16 09:50:42,001 - INFO - Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-16 09:50:42,058 - INFO - Rows loaded: 10000
+2026-04-16 09:50:42,064 - INFO - Rolling mean and signal generated
+2026-04-16 09:50:42,066 - INFO - Metrics: {'version': 'v1', 'rows_processed': 9996, 'metric': 'signal_rate', 'signal_rate': np.float64(0.49909963985594236), 'value': 0.4991, 'latency_ms': 63, 'seed': 42, 'status': 'success'}
+2026-04-16 09:50:42,066 - INFO - Job completed successfully
+2026-04-16 09:51:37,238 - INFO - Job started
+2026-04-16 09:51:37,238 - INFO - Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-16 09:51:37,304 - INFO - Rows loaded: 10000
+2026-04-16 09:51:37,312 - INFO - Rolling mean and signal generated
+2026-04-16 09:51:37,314 - INFO - Metrics: {'version': 'v1', 'rows_processed': 9996, 'metric': 'signal_rate', 'value': 0.4991, 'latency_ms': 73, 'seed': 42, 'status': 'success'}
+2026-04-16 09:51:37,314 - INFO - Job completed successfully
+2026-04-16 09:55:55,790 - INFO - Job started
+2026-04-16 09:55:55,790 - INFO - Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-16 09:55:55,847 - INFO - Rows loaded: 10000
+2026-04-16 09:55:55,847 - INFO - Rolling mean computation started
+2026-04-16 09:55:55,847 - INFO - Signal generation completed
+2026-04-16 09:55:55,847 - INFO - Metrics: {'version': 'v1', 'rows_processed': 9996, 'metric': 'signal_rate', 'value': 0.4991, 'latency_ms': 57, 'seed': 42, 'status': 'success'}
+2026-04-16 09:55:55,861 - INFO - Job completed successfully
+2026-04-16 10:23:36,573 - INFO - Job started
+2026-04-16 10:23:36,591 - INFO - Config loaded: {'seed': 42, 'window': 5, 'version': 'v1'}
+2026-04-16 10:23:36,736 - INFO - Rows loaded: 10000
+2026-04-16 10:23:36,736 - INFO - Rolling mean computation started
+2026-04-16 10:23:36,768 - INFO - Signal generation completed
+2026-04-16 10:23:36,768 - INFO - Total latency: 195 ms
+2026-04-16 10:23:36,768 - INFO - Metrics: {'version': 'v1', 'rows_processed': 9996, 'metric': 'signal_rate', 'value': 0.4991, 'latency_ms': 195, 'seed': 42, 'status': 'success'}
+2026-04-16 10:23:36,768 - INFO - Job completed successfully
